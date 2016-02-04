@@ -1,0 +1,15 @@
+<<用户可通过以下方式来使用NETCONF协议配置/管理设备：
+- 用户可以通过Telnet、SSH、Console登录到设备的CLI界面，通过命令行界面编辑下发NETCONF指令。该方式一般用于研发和测试环境。在XML视图下，将合法的NETCONF报文直接拷贝、粘贴到命令行提示符处，即可验证设备的NETCONF功能是否运行正常。
+- 用户使用自己开发的配置工具给设备下发NETCONF指令来实现对设备的访问。因为用户开发的配置工具的URL和设备出厂支持的URL不一致，用户需要将下发NETCONF指令用SOAP封装成一种通用的格式，以便设备能够正常转换。因此，使用该方式前必须使能NETCONF over SOAP功能。
+
+<< enable netconf on 6800
+<Sysname> system-view
+netconf soap http enable
+undo netconf soap http enable
+
+Reference:
+-> NETCONF配置: http://www.h3c.com.cn/Service/Document_Center/Switches/Catalog/S5130/S5130_EI_D/Configure/Operation_Manual/S5130-EI-D_CG-Release_3106-6W100/10/201408/836908_30005_0.htm
+-> 网络管理和监控命令参考: http://www.h3c.com.cn/Service/Document_Center/Switches/Catalog/S9800/S9800/Command/Command_Manual/H3C_S9800_CR-R2117[R2118]-6W100/11/201408/838307_30005_0.htm
+-> neconf configuration: http://www.h3c.com/portal/Technical_Support___Documents/Technical_Documents/Switches/H3C_S12500_Series_Switches/Configuration/Operation_Manual/H3C_S12500_CG-Release7328-6W730/12/201402/817714_1285_0.htm#_Toc379986613
+
+
